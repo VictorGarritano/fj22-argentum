@@ -25,7 +25,12 @@ public final class Negociacao {
 	public Calendar getData() {
 		return data;
 	}
-
+	
+	public double getVolume() {
+		return preco * quantidade;
+		
+	}
+	
 
 }	
 
