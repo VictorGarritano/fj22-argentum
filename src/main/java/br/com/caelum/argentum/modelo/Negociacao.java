@@ -23,7 +23,7 @@ public final class Negociacao {
 	}
 
 	public Calendar getData() {
-		return (Calendar) this.data.clone();
+		return data;
 	}
 
 	public double getVolume() {
