@@ -3,14 +3,14 @@ package br.com.caelum.argentum.modelo;
 import java.util.Calendar;
 import java.util.List;
 
-public class CandlestickFactory {
-	public Candlestick constroiCandleParaData(Calendar data,
-			List<Negocio> negociacoes) {
+public class CandleStickFactory {
+	public CandleStick constroiCandleParaData(Calendar data,
+			List<Negociacao> negociacoes) {
 		double maximo = 0;
 		double minimo = Double.MAX_VALUE;
 		double volume = 0;
 
-		for (Negocio negociacao : negociacoes) {
+		for (Negociacao negociacao : negociacoes) {
 			volume += negociacao.getVolume();
 
 			if (negociacao.getPreco() > maximo) {
@@ -25,8 +25,7 @@ public class CandlestickFactory {
 		double fechamento = negociacoes.isEmpty() ? 0 : negociacoes.get(
 				negociacoes.size() - 1).getPreco();
 
-		return new Candlestick(abertura, fechamento, minimo, maximo, volume,
+		return new CandleStick(abertura, fechamento, minimo, maximo, volume,
 				data);
 	}
 }
-

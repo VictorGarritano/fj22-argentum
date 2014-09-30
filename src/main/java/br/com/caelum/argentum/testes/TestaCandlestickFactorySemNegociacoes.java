@@ -4,19 +4,19 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.caelum.argentum.modelo.Candlestick;
-import br.com.caelum.argentum.modelo.CandlestickFactory;
-import br.com.caelum.argentum.modelo.Negocio;
+import br.com.caelum.argentum.modelo.CandleStick;
+import br.com.caelum.argentum.modelo.CandleStickFactory;
+import br.com.caelum.argentum.modelo.Negociacao;
 
-public class TestaCandlestickFactorySemNenhumaNegociacao {
+public class TestaCandlestickFactorySemNegociacoes {
 
 	  public static void main(String[] args) {
 	    Calendar hoje = Calendar.getInstance();
 	    
-	    List<Negocio> negociacoes = Arrays.asList();
+	    List<Negociacao> negociacoes = Arrays.asList();
 	    
-	    CandlestickFactory fabrica = new CandlestickFactory();
-	    Candlestick candle = fabrica.constroiCandleParaData(hoje, negociacoes);
+	    CandleStickFactory fabrica = new CandleStickFactory();
+	    CandleStick candle = fabrica.constroiCandleParaData(hoje, negociacoes);
 	    
 	    System.out.println(candle.getAbertura());
 	    System.out.println(candle.getFechamento());
@@ -25,4 +25,3 @@ public class TestaCandlestickFactorySemNenhumaNegociacao {
 	    System.out.println(candle.getVolume());
 	  }
 	}
-
