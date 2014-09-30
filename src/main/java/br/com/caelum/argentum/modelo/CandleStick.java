@@ -14,6 +14,10 @@ public final class CandleStick {
 
 	public CandleStick(double abertura, double fechamento, double minimo,
 			double maximo, double volume, Calendar data) {
+		if (minimo > maximo) {
+			throw new IllegalArgumentException(
+					"The minimum value can't be higher than the maximum one.");
+		}
 		this.abertura = abertura;
 		this.fechamento = fechamento;
 		this.minimo = minimo;
