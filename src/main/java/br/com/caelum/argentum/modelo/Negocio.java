@@ -1,14 +1,15 @@
+
 package br.com.caelum.argentum.modelo;
 
 import java.util.Calendar;
 
-public final class Negociacao {
+public final class Negocio {
 
 	private final double preco;
 	private final int quantidade;
 	private final Calendar data;
 
-	public Negociacao(double preco, int quantidade, Calendar data) {
+	public Negocio(double preco, int quantidade, Calendar data) {
 		this.preco = preco;
 		this.quantidade = quantidade;
 		this.data = data;
@@ -32,3 +33,4 @@ public final class Negociacao {
 	}
 
 }
+
