@@ -9,6 +9,9 @@ public final class Negociacao {
 	private final Calendar data;
 
 	public Negociacao(double preco, int quantidade, Calendar data) {
+		if(data == null) {
+			throw new IllegalArgumentException("The date can't be null.");
+		}
 		this.preco = preco;
 		this.quantidade = quantidade;
 		this.data = data;

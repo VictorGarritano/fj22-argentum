@@ -19,4 +19,9 @@ public class NegociacaoTest {
 		// ele continua no dia 15.
 		Assert.assertEquals(15, n.getData().get(Calendar.DAY_OF_MONTH));
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void naoCriaNegocioComDataNula() {
+	  new Negociacao(10, 5, null);
+	}
 }
