@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import br.com.caelum.argentum.modelo.CandleStick;
 
+import static org.junit.Assert.*;
+
 public class CandleStickTest {
 
 	@Test(expected=IllegalArgumentException.class)
@@ -23,4 +25,9 @@ public class CandleStickTest {
 		new CandleStick(10 ,20, 30, 40, 5000, null);
 	}
 
+	@Test
+	public void quandoAberturaIgualFechamentoEhAlta() {
+		CandleStick candle = new CandleStick(40, 40, 20, 20, 100, Calendar.getInstance());
+		assertEquals(true, candle.isAlta());
+	}
 }
