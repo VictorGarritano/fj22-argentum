@@ -68,6 +68,49 @@ public class CandleStickFactoryTest {
 		Assert.assertEquals(40.5, candle.getMaximo(), 0.00001);
 		Assert.assertEquals(4050.0, candle.getVolume(), 0.00001);
 		
-		
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void negociacoesEmOrdemCrescenteDeValor() {
+		Calendar hoje = Calendar.getInstance();
+
+		Negociacao negociacao1 = new Negociacao(40.5, 100, hoje);
+		Negociacao negociacao2 = new Negociacao(45.0, 100, hoje);
+		Negociacao negociacao3 = new Negociacao(49.8, 100, hoje);
+		Negociacao negociacao4 = new Negociacao(52.3, 100, hoje);
+
+		List<Negociacao> negocios = Arrays.asList(negociacao1, negociacao2,
+				negociacao3, negociacao4);
+
+		CandleStickFactory fabrica = new CandleStickFactory();
+		CandleStick candle = fabrica.constroiCandleParaData(hoje, negocios);
+
+		Assert.assertEquals(40.5, candle.getAbertura(), 0.00001);
+		Assert.assertEquals(52.3, candle.getFechamento(), 0.00001);
+		Assert.assertEquals(40.5, candle.getMinimo(), 0.00001);
+		Assert.assertEquals(52.3, candle.getMaximo(), 0.00001);
+		Assert.assertEquals(18760.0, candle.getVolume(), 0.00001);
+	}
+
+	@Test
+	public void negociacoesEmOrdemDecrescenteDeValor() {
+		Calendar hoje = Calendar.getInstance();
+
+		Negociacao negociacao1 = new Negociacao(52.3, 100, hoje);
+		Negociacao negociacao2 = new Negociacao(49.8, 100, hoje);
+		Negociacao negociacao3 = new Negociacao(45, 100, hoje);
+		Negociacao negociacao4 = new Negociacao(40.5, 100, hoje);
+
+		List<Negociacao> negocios = Arrays.asList(negociacao1, negociacao2,
+				negociacao3, negociacao4);
+
+		CandleStickFactory fabrica = new CandleStickFactory();
+		CandleStick candle = fabrica.constroiCandleParaData(hoje, negocios);
+
+		Assert.assertEquals(52.3, candle.getAbertura(), 0.00001);
+		Assert.assertEquals(40.5, candle.getFechamento(), 0.00001);
+		Assert.assertEquals(40.5, candle.getMinimo(), 0.00001);
+		Assert.assertEquals(52.3, candle.getMaximo(), 0.00001);
+		Assert.assertEquals(18760.0, candle.getVolume(), 0.00001);
 	}
 }
