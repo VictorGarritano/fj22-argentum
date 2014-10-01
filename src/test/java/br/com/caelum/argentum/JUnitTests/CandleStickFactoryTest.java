@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 import br.com.caelum.argentum.modelo.CandleStick;
@@ -28,11 +28,11 @@ public class CandleStickFactoryTest {
 		CandleStickFactory fabrica = new CandleStickFactory();
 		CandleStick candle = fabrica.constroiCandleParaData(hoje, negocios);
 
-		Assert.assertEquals(40.5, candle.getAbertura(), 0.00001);
-		Assert.assertEquals(42.3, candle.getFechamento(), 0.00001);
-		Assert.assertEquals(39.8, candle.getMinimo(), 0.00001);
-		Assert.assertEquals(45.0, candle.getMaximo(), 0.00001);
-		Assert.assertEquals(16760.0, candle.getVolume(), 0.00001);
+		assertEquals(40.5, candle.getAbertura(), 0.00001);
+		assertEquals(42.3, candle.getFechamento(), 0.00001);
+		assertEquals(39.8, candle.getMinimo(), 0.00001);
+		assertEquals(45.0, candle.getMaximo(), 0.00001);
+		assertEquals(16760.0, candle.getVolume(), 0.00001);
 	}
 
 	@Test(expected=IllegalArgumentException.class)
@@ -44,11 +44,11 @@ public class CandleStickFactoryTest {
 		CandleStickFactory fabrica = new CandleStickFactory();
 		CandleStick candle = fabrica.constroiCandleParaData(hoje, negocios);
 
-		Assert.assertEquals(0.0, candle.getVolume(), 0.00001);
-		Assert.assertEquals(0.0, candle.getAbertura(), 0.00001);
-		Assert.assertEquals(0.0, candle.getFechamento(), 0.00001);
-		Assert.assertEquals(Double.MAX_VALUE, candle.getMinimo(), 0.00001);
-		Assert.assertEquals(0.0, candle.getMaximo(), 0.00001);
+		assertEquals(0.0, candle.getVolume(), 0.00001);
+		assertEquals(0.0, candle.getAbertura(), 0.00001);
+		assertEquals(0.0, candle.getFechamento(), 0.00001);
+		assertEquals(Double.MAX_VALUE, candle.getMinimo(), 0.00001);
+		assertEquals(0.0, candle.getMaximo(), 0.00001);
 	}
 
 	@Test(expected=IllegalArgumentException.class)
@@ -62,11 +62,11 @@ public class CandleStickFactoryTest {
 		CandleStickFactory fabrica = new CandleStickFactory();
 		CandleStick candle = fabrica.constroiCandleParaData(hoje, negocios);
 
-		Assert.assertEquals(40.5, candle.getAbertura(), 0.00001);
-		Assert.assertEquals(40.5, candle.getFechamento(), 0.00001);
-		Assert.assertEquals(Double.MAX_VALUE, candle.getMinimo(), 0.00001);
-		Assert.assertEquals(40.5, candle.getMaximo(), 0.00001);
-		Assert.assertEquals(4050.0, candle.getVolume(), 0.00001);
+		assertEquals(40.5, candle.getAbertura(), 0.00001);
+		assertEquals(40.5, candle.getFechamento(), 0.00001);
+		assertEquals(Double.MAX_VALUE, candle.getMinimo(), 0.00001);
+		assertEquals(40.5, candle.getMaximo(), 0.00001);
+		assertEquals(4050.0, candle.getVolume(), 0.00001);
 		
 	}
 	
@@ -85,11 +85,11 @@ public class CandleStickFactoryTest {
 		CandleStickFactory fabrica = new CandleStickFactory();
 		CandleStick candle = fabrica.constroiCandleParaData(hoje, negocios);
 
-		Assert.assertEquals(40.5, candle.getAbertura(), 0.00001);
-		Assert.assertEquals(52.3, candle.getFechamento(), 0.00001);
-		Assert.assertEquals(40.5, candle.getMinimo(), 0.00001);
-		Assert.assertEquals(52.3, candle.getMaximo(), 0.00001);
-		Assert.assertEquals(18760.0, candle.getVolume(), 0.00001);
+		assertEquals(40.5, candle.getAbertura(), 0.00001);
+		assertEquals(52.3, candle.getFechamento(), 0.00001);
+		assertEquals(40.5, candle.getMinimo(), 0.00001);
+		assertEquals(52.3, candle.getMaximo(), 0.00001);
+		assertEquals(18760.0, candle.getVolume(), 0.00001);
 	}
 
 	@Test
@@ -107,10 +107,10 @@ public class CandleStickFactoryTest {
 		CandleStickFactory fabrica = new CandleStickFactory();
 		CandleStick candle = fabrica.constroiCandleParaData(hoje, negocios);
 
-		Assert.assertEquals(52.3, candle.getAbertura(), 0.00001);
-		Assert.assertEquals(40.5, candle.getFechamento(), 0.00001);
-		Assert.assertEquals(40.5, candle.getMinimo(), 0.00001);
-		Assert.assertEquals(52.3, candle.getMaximo(), 0.00001);
-		Assert.assertEquals(18760.0, candle.getVolume(), 0.00001);
+		assertEquals(52.3, candle.getAbertura(), 0.00001);
+		assertEquals(40.5, candle.getFechamento(), 0.00001);
+		assertEquals(40.5, candle.getMinimo(), 0.00001);
+		assertEquals(52.3, candle.getMaximo(), 0.00001);
+		assertEquals(18760.0, candle.getVolume(), 0.00001);
 	}
 }
