@@ -35,7 +35,7 @@ public class CandleStickFactoryTest {
 		Assert.assertEquals(16760.0, candle.getVolume(), 0.00001);
 	}
 
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void semNegociosGeraCandleComZeros() {
 		Calendar hoje = Calendar.getInstance();
 
@@ -51,7 +51,7 @@ public class CandleStickFactoryTest {
 		Assert.assertEquals(0.0, candle.getMaximo(), 0.00001);
 	}
 
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void apenasUmNegocioGeraCandleComValoresIguais() {
 		Calendar hoje = Calendar.getInstance();
 
@@ -67,5 +67,7 @@ public class CandleStickFactoryTest {
 		Assert.assertEquals(Double.MAX_VALUE, candle.getMinimo(), 0.00001);
 		Assert.assertEquals(40.5, candle.getMaximo(), 0.00001);
 		Assert.assertEquals(4050.0, candle.getVolume(), 0.00001);
+		
+		
 	}
 }
