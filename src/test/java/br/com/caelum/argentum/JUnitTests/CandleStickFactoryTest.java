@@ -113,4 +113,42 @@ public class CandleStickFactoryTest {
 		assertEquals(52.3, candle.getMaximo(), 0.00001);
 		assertEquals(18760.0, candle.getVolume(), 0.00001);
 	}
+	
+	 @Test(expected=IllegalArgumentException.class)
+	 public void paraNegociosDeTresDiasDistintosGeraTresCandles() {
+	   Calendar hoje = Calendar.getInstance();
+	   
+	   Negociacao negocio1 = new Negociacao(40.5, 100, hoje);
+	   Negociacao negocio2 = new Negociacao(45.0, 100, hoje);
+	   Negociacao negocio3 = new Negociacao(39.8, 100, hoje);
+	   Negociacao negocio4 = new Negociacao(42.3, 100, hoje);
+	   
+	   Calendar amanha = (Calendar) hoje.clone();
+	   amanha.add(Calendar.DAY_OF_MONTH, 1);
+	   
+	   Negociacao negocio5 = new Negociacao(48.8, 100, amanha);
+	   Negociacao negocio6 = new Negociacao(49.3, 100, amanha);
+	   
+	   Calendar depois = (Calendar) amanha.clone();
+	   depois.add(Calendar.DAY_OF_MONTH, 1);
+	   
+	   Negociacao negocio7 = new Negociacao(51.8, 100, depois);
+	   Negociacao negocio8 = new Negociacao(52.3, 100, depois);
+	   
+	   List<Negociacao> negocios = Arrays.asList(negocio1, negocio2, negocio3,
+	       negocio4, negocio5, negocio6, negocio7, negocio8);
+	   
+	   CandleStickFactory fabrica = new CandleStickFactory();
+	   
+	   List<CandleStick> candles = fabrica.constroiCandles(negocios);
+	   
+	   assertEquals(3, candles.size());
+	  assertEquals(40.5, candles.get(0).getAbertura(), 0.00001);
+	   assertEquals(42.3, candles.get(0).getFechamento(), 0.00001);
+	   assertEquals(48.8, candles.get(1).getAbertura(), 0.00001);
+	   assertEquals(49.3, candles.get(1).getFechamento(), 0.00001);
+	   assertEquals(51.8, candles.get(2).getAbertura(), 0.00001);
+	   assertEquals(52.3, candles.get(2).getFechamento(), 0.00001);
+	 }
+	 
 }

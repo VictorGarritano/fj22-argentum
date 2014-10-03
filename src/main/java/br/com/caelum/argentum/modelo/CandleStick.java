@@ -14,14 +14,16 @@ public final class CandleStick {
 
 	public CandleStick(double abertura, double fechamento, double minimo,
 			double maximo, double volume, Calendar data) {
-		if(abertura < 0 || fechamento < 0 || minimo < 0 || maximo < 0 || volume < 0) {
-			throw new IllegalArgumentException("None of the values can be negative.");
-		}
-		if (minimo > maximo) {
+		if (abertura < 0 || fechamento < 0 || minimo < 0 || maximo < 0
+				|| volume < 0) {
 			throw new IllegalArgumentException(
-					"The minimum value can't be higher than the maximum one.");
+					"None of the values can be negative.");
 		}
-		if(data == null) {
+		if (maximo < minimo) {
+			throw new IllegalArgumentException(
+					"The mininum value cant be higher than the higher one");
+		}
+		if (data == null) {
 			throw new IllegalArgumentException("The date can't be null.");
 		}
 		this.abertura = abertura;

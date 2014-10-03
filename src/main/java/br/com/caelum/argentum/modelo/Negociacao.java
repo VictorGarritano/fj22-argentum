@@ -34,4 +34,12 @@ public final class Negociacao {
 
 	}
 
+	public boolean isMesmoDia(Calendar outraData) {
+		return this.data.get(Calendar.DATE) == outraData.get(Calendar.DATE) &&
+				this.data.get(Calendar.MONTH) == outraData.get(Calendar.MONTH) &&
+				this.data.get(Calendar.YEAR) == outraData.get(Calendar.YEAR);
+	}
 }
+	
+	
+
