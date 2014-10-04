@@ -114,7 +114,7 @@ public class CandleStickFactoryTest {
 		assertEquals(18760.0, candle.getVolume(), 0.00001);
 	}
 	
-
+	@Test
 	 public void paraNegociosDeTresDiasDistintosGeraTresCandles() {
 	   Calendar hoje = Calendar.getInstance();
 	   
