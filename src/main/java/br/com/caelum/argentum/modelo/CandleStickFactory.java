@@ -13,7 +13,7 @@ public class CandleStickFactory {
 
 		for (Negociacao negociacao : negociacoes) {
 			volume += negociacao.getVolume();
-
+			
 			if (negociacao.getPreco() > maximo) {
 				maximo = negociacao.getPreco();
 			} else if (negociacao.getPreco() < minimo) {
@@ -37,6 +37,10 @@ public class CandleStickFactory {
 		   Calendar dataAtual = todosNegocios.get(0).getData();
 		 
 		   for (Negociacao negocio : todosNegocios) {
+			   
+			   if (negocio.getData().before(dataAtual)) {
+				    throw new IllegalStateException("negocios em ordem errada");
+				  }
 		     // se não for mesmo dia, fecha candle e reinicia variáveis
 		     if (!negocio.isMesmoDia(dataAtual)) {
 		       CandleStick candleDoDia = constroiCandleParaData(dataAtual, negociosDoDia);
