@@ -2,18 +2,21 @@ package br.com.caelum.argentum.modelo;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 public class CandleStickFactory {
+
 	public CandleStick constroiCandleParaData(Calendar data,
 			List<Negociacao> negociacoes) {
+
 		double maximo = 0;
 		double minimo = Double.MAX_VALUE;
 		double volume = 0;
 
 		for (Negociacao negociacao : negociacoes) {
 			volume += negociacao.getVolume();
-			
+
 			if (negociacao.getPreco() > maximo) {
 				maximo = negociacao.getPreco();
 			} else if (negociacao.getPreco() < minimo) {
@@ -31,29 +34,34 @@ public class CandleStickFactory {
 	}
 
 	public List<CandleStick> constroiCandles(List<Negociacao> todosNegocios) {
-		   List<CandleStick> candles = new ArrayList<CandleStick>();
-		 
-		   List<Negociacao> negociosDoDia = new ArrayList<Negociacao>();
-		   Calendar dataAtual = todosNegocios.get(0).getData();
-		 
-		   for (Negociacao negocio : todosNegocios) {
-			   
-			   if (negocio.getData().before(dataAtual)) {
-				    throw new IllegalStateException("negocios em ordem errada");
-				  }
-		     // se não for mesmo dia, fecha candle e reinicia variáveis
-		     if (!negocio.isMesmoDia(dataAtual)) {
-		       CandleStick candleDoDia = constroiCandleParaData(dataAtual, negociosDoDia);
-		       candles.add(candleDoDia);
-		       negociosDoDia = new ArrayList<Negociacao>();
-		       dataAtual = negocio.getData();
-		     }
-		     negociosDoDia.add(negocio);
-		   }
-		   // adiciona último candle
-		   CandleStick candleDoDia = constroiCandleParaData(dataAtual, negociosDoDia);
-		   candles.add(candleDoDia);
-		 
-		   return candles;
-		 }
+
+		Collections.sort(todosNegocios);
+		
+		List<CandleStick> candles = new ArrayList<CandleStick>();
+
+		List<Negociacao> negociosDoDia = new ArrayList<Negociacao>();
+		Calendar dataAtual = todosNegocios.get(0).getData();
+
+		for (Negociacao negocio : todosNegocios) {
+
+			if (negocio.getData().before(dataAtual)) {
+				throw new IllegalStateException("negocios em ordem errada");
+			}
+			// se não for mesmo dia, fecha candle e reinicia variáveis
+			if (!negocio.isMesmoDia(dataAtual)) {
+				CandleStick candleDoDia = constroiCandleParaData(dataAtual,
+						negociosDoDia);
+				candles.add(candleDoDia);
+				negociosDoDia = new ArrayList<Negociacao>();
+				dataAtual = negocio.getData();
+			}
+			negociosDoDia.add(negocio);
+		}
+		// adiciona último candle
+		CandleStick candleDoDia = constroiCandleParaData(dataAtual,
+				negociosDoDia);
+		candles.add(candleDoDia);
+
+		return candles;
+	}
 }

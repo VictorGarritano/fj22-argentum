@@ -151,7 +151,7 @@ public class CandleStickFactoryTest {
 		assertEquals(52.3, candles.get(2).getFechamento(), 0.00001);
 	}
 
-	@Test(expected = IllegalStateException.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void naoPermiteConstruirCandlesComNegociosForaDeOrdem() {
 		Calendar hoje = Calendar.getInstance();
 		
@@ -177,7 +177,8 @@ public class CandleStickFactoryTest {
 
 		List<Negociacao> negocios = Arrays.asList(negocio1, negocio2, negocio3,
 				negocio4, negocio5, negocio6, negocio7, negocio8);
-
+		
+		
 		CandleStickFactory fabrica = new CandleStickFactory();
 
 		List<CandleStick> candles = fabrica.constroiCandles(negocios);
