@@ -1,6 +1,5 @@
 package br.com.caelum.argentum.reader;
 
-import java.io.InputStream;
 import java.io.Reader;
 import java.util.List;
 
@@ -18,12 +17,4 @@ public class LeitorXML {
 		return (List<Negociacao>) stream.fromXML(fonte);
 	}
 
-	
-	@SuppressWarnings("unchecked")
-	public List<Negociacao> carrega(InputStream content) {
-		// TODO Auto-generated method stub
-		XStream stream = new XStream(new DomDriver());
-		stream.alias("negocio", Negociacao.class);
-		return (List<Negociacao>) stream.fromXML(content);
-	}
 }
