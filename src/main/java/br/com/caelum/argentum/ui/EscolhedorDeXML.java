@@ -23,7 +23,7 @@ public class EscolhedorDeXML {
 				List<Negociacao> negocios = new LeitorXML().carrega(reader);
 
 				Negociacao primeiroNegocio = negocios.get(0);
-				String mensagem = "Primeiro negócio: "
+				String mensagem = "Primeiro negocio: "
 						+ primeiroNegocio.getPreco();
 				JOptionPane.showMessageDialog(null, mensagem);
 			}
