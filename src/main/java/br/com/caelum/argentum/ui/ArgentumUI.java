@@ -3,34 +3,44 @@ package br.com.caelum.argentum.ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-
 
 public class ArgentumUI {
 
 	private JFrame janela;
 	private JPanel painelPrincipal;
+
 	public static void main(String[] args) {
-		try {  
-	        UIManager.setLookAndFeel("napkin.NapkinLookAndFeel");  
-	    } catch (Exception e) {  
-	           e.printStackTrace();  
-	    }
-		new ArgentumUI().montaTela();
+	    SwingUtilities.invokeLater(new Runnable() {
+	        public void run() {
+	            try {
+	                ArgentumUI ui = new ArgentumUI();
+	                ui.montaTela();
+	                UIManager.setLookAndFeel("napkin.NapkinLookAndFeel");
+	                SwingUtilities.updateComponentTreeUI(ui.janela);
+	                ui.mostraJanela();
+	            } catch (Exception ex) {
+	                Logger.getLogger(ArgentumUI.class.getName()).log(Level.SEVERE, null, ex);
+	            }
+	        }
+	    });
 	}
+
 
 	public void montaTela() {
 		preparaJanela();
 		preparaPainelPrincipal();
 		preparaBotaoCarregar();
 		preparaBotaoSair();
-		mostraJanela();
+//		mostraJanela();
 	}
-
 
 	private void mostraJanela() {
 		// TODO Auto-generated method stub
