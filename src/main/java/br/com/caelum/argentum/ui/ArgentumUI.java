@@ -1,13 +1,10 @@
 package br.com.caelum.argentum.ui;
 
-import java.awt.AWTEvent;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.List;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,6 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import br.com.caelum.argentum.modelo.Negociacao;
 
@@ -29,13 +29,30 @@ public class ArgentumUI {
 	}
 
 	public void montaTela() {
+
 		preparaJanela();
 		preparaPainelPrincipal();
 		preparaTitulo();
 		preparaTabela();
 		preparaBotaoCarregar();
 		preparaBotaoSair();
+		setLaF();
 		mostraJanela();
+
+	}
+
+	private void setLaF() {
+		// TODO Auto-generated method stub
+		try {
+			UIManager
+					.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+			SwingUtilities.updateComponentTreeUI(janela);
+			janela.pack();
+		} catch (ClassNotFoundException | InstantiationException
+				| IllegalAccessException | UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void preparaTabela() {
@@ -68,26 +85,7 @@ public class ArgentumUI {
 		// Action Listener
 		botaoSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				buttonActionSair(e);
-			}
-		});
-
-		// Key Listener para o Frame
-		botaoSair.addKeyListener(new KeyListener() {
-
-			// Quando soltar a tecla
-			public void keyReleased(KeyEvent e) {
-
-				// Se a tecla pressionada for igual a F2
-				if (e.getKeyCode() == KeyEvent.VK_S) {
-					buttonActionSair(e);
-				}
-			}
-
-			public void keyTyped(KeyEvent e) {
-			}
-
-			public void keyPressed(KeyEvent e) {
+				System.exit(0);
 			}
 		});
 
@@ -102,26 +100,10 @@ public class ArgentumUI {
 		// Action Listener
 		botaoCarregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				buttonActionCarregar(e);
-			}
-		});
-
-		// Key Listener para o Frame
-		botaoCarregar.addKeyListener(new KeyListener() {
-
-			// Quando soltar a tecla
-			public void keyReleased(KeyEvent e) {
-
-				// Se a tecla pressionada for igual a F2
-				if (e.getKeyCode() == KeyEvent.VK_C) {
-					buttonActionCarregar(e);
-				}
-			}
-
-			public void keyTyped(KeyEvent e) {
-			}
-
-			public void keyPressed(KeyEvent e) {
+				List<Negociacao> lista = new EscolhedorDeXML().escolhe();
+				NegociosTableModel ntm = new NegociosTableModel(lista);
+				tabela.setModel(ntm);
+				janela.requestFocus();
 			}
 		});
 
@@ -134,24 +116,9 @@ public class ArgentumUI {
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	private void buttonActionSair(AWTEvent e) {
-		if (e instanceof KeyEvent || e instanceof ActionEvent) {
-			System.exit(0);
-		}
-	}
-
-	private void buttonActionCarregar(AWTEvent e) {
-		if (e instanceof KeyEvent || e instanceof ActionEvent) {
-			List<Negociacao> lista = new EscolhedorDeXML().escolhe();
-			NegociosTableModel ntm = new NegociosTableModel(lista);
-			tabela.setModel(ntm);
-			janela.requestFocus();
-		}
-	}
-	
 	private void preparaTitulo() {
-		  JLabel titulo = new JLabel("Lista de Negócios", SwingConstants.CENTER);
-		  titulo.setFont(new Font("Verdana", Font.BOLD, 25));
-		  painelPrincipal.add(titulo);  
-		}
+		JLabel titulo = new JLabel("Lista de Negócios", SwingConstants.CENTER);
+		titulo.setFont(new Font("Verdana", Font.BOLD, 25));
+		painelPrincipal.add(titulo);
+	}
 }
