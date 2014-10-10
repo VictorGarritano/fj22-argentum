@@ -9,7 +9,16 @@ public class MediaMovelPonderada {
 	     for (int i = posicao - 2; i <= posicao; i++) {
 	       soma += (serie.getCandle(i).getFechamento() * peso);
 	       peso++;
+	       
 	     }
 	     return soma / 6;
 	   }
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Media Movel Ponderada";
+	}
+	
+	
 }

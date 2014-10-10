@@ -70,8 +70,8 @@ public final class Candle {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "[" + "Abertura: " + this.getAbertura() + ", Fechamento: "
-				+ this.getFechamento() + ", M�nimo: " + this.getMinimo()
-				+ ", M�ximo: " + this.getMaximo() + ", Volume: "
+				+ this.getFechamento() + ", Minimo: " + this.getMinimo()
+				+ ", Maximo: " + this.getMaximo() + ", Volume: "
 				+ this.getVolume() + ", Data: "
 				+ sdf.format(this.getData().getTime()) + "]";
 	}

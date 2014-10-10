@@ -10,4 +10,12 @@ public class MediaMovelSimples {
 	     }
 	     return soma / 3;
 	   }
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Media Movel Simples";
+	}
+	
+	
 }
