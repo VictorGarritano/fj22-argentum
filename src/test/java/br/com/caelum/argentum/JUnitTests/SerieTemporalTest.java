@@ -1,11 +1,8 @@
 package br.com.caelum.argentum.JUnitTests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.awt.List;
 import java.util.ArrayList;
-import java.util.Calendar;
-
 import org.junit.Test;
 
 import br.com.caelum.argentum.modelo.CandleStick;
@@ -18,6 +15,10 @@ public class SerieTemporalTest {
 		
 		ArrayList<CandleStick> c = new ArrayList<>();
 		SerieTemporal st = new SerieTemporal(c);
+		
+		st.getTotal();
+
+		assertEquals(3, st.getTotal(), 0.00001);
 		
 	}
 
