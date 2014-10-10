@@ -12,7 +12,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-import br.com.caelum.argentum.indicadores.MediaMovelSimples;
+import br.com.caelum.argentum.indicadores.Indicador;
 import br.com.caelum.argentum.modelo.SerieTemporal;
 
 public class GeradorDeGrafico {
@@ -34,8 +34,7 @@ public class GeradorDeGrafico {
 				"Valores", dados, PlotOrientation.VERTICAL, true, true, false);
 	}
 
-	public void plotaMediaMovelSimples() {
-		MediaMovelSimples ind = new MediaMovelSimples();
+	public void plotaIndicador(Indicador ind) {
 		for (int i = comeco; i <= fim; i++) {
 			double valor = ind.calcula(i, serie);
 			dados.addValue(valor, ind.toString(), Integer.valueOf(i));
@@ -45,8 +44,8 @@ public class GeradorDeGrafico {
 	public void salva(OutputStream out) throws IOException {
 		ChartUtilities.writeChartAsPNG(out, grafico, 500, 350);
 	}
-	
+
 	public JPanel getPanel() {
-		  return new ChartPanel(grafico);
-		}
+		return new ChartPanel(grafico);
+	}
 }
