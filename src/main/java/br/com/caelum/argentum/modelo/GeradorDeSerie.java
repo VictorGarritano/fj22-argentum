@@ -13,9 +13,9 @@ public class GeradorDeSerie {
 	  * tais candles encapsuladas em uma Serie Temporal.
 	  **/
 	 public static SerieTemporal criaSerie(double... valores) {
-	   List<CandleStick> candles = new ArrayList<CandleStick>();
+	   List<Candle> candles = new ArrayList<Candle>();
 	   for (double d : valores) {
-	     candles.add(new CandleStick(d, d, d, d, 1000, 
+	     candles.add(new Candle(d, d, d, d, 1000, 
 	                     Calendar.getInstance()));
 	   }
 	   return new SerieTemporal(candles);

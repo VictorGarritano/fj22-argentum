@@ -54,10 +54,10 @@ public class CandleBuilder {
 		return this;
 	}
 
-	public CandleStick geraCandle() {
+	public Candle geraCandle() {
 		if (!(b1 && b2 && b3 && b4 && b5 && b6)){
 			throw new IllegalStateException("Some parameters were not filled");
 		}
-		return new CandleStick(abertura, fechamento, minimo, maximo, volume, data);
+		return new Candle(abertura, fechamento, minimo, maximo, volume, data);
 	}
 }

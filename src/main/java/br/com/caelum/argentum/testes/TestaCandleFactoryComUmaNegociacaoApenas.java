@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.caelum.argentum.modelo.CandleStick;
-import br.com.caelum.argentum.modelo.CandleStickFactory;
+import br.com.caelum.argentum.modelo.Candle;
+import br.com.caelum.argentum.modelo.CandleFactory;
 import br.com.caelum.argentum.modelo.Negociacao;
 
-public class TestaCandleStickFactoryComUmaNegociacaoApenas {
+public class TestaCandleFactoryComUmaNegociacaoApenas {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -18,8 +18,8 @@ public class TestaCandleStickFactoryComUmaNegociacaoApenas {
 
 		List<Negociacao> negociacoes = Arrays.asList(negociacao1);
 
-		CandleStickFactory fabrica = new CandleStickFactory();
-		CandleStick candle = fabrica.constroiCandleParaData(hoje, negociacoes);
+		CandleFactory fabrica = new CandleFactory();
+		Candle candle = fabrica.constroiCandleParaData(hoje, negociacoes);
 
 		System.out.println(candle.getAbertura());
 		System.out.println(candle.getFechamento());

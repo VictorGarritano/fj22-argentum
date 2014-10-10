@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import org.junit.Test;
 
-import br.com.caelum.argentum.modelo.CandleStick;
+import br.com.caelum.argentum.modelo.Candle;
 import br.com.caelum.argentum.modelo.SerieTemporal;
 
 public class SerieTemporalTest {
@@ -13,7 +13,7 @@ public class SerieTemporalTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void SerieTemporalNaoPodeReceberListaNula() {
 		
-		ArrayList<CandleStick> c = new ArrayList<>();
+		ArrayList<Candle> c = new ArrayList<>();
 		SerieTemporal st = new SerieTemporal(c);
 		
 		st.getTotal();

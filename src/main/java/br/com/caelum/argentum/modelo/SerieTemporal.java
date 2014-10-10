@@ -3,16 +3,16 @@ package br.com.caelum.argentum.modelo;
 import java.util.List;
 
 public class SerieTemporal {
-	private final List<CandleStick> candles;
+	private final List<Candle> candles;
 
-	public SerieTemporal(List<CandleStick> candles) {
+	public SerieTemporal(List<Candle> candles) {
 		if(candles.size() == 0) {
 			throw new IllegalArgumentException();
 		}
 		this.candles = candles;
 	}
 
-	public CandleStick getCandle(int i) {
+	public Candle getCandle(int i) {
 		return this.candles.get(i);
 	}
 

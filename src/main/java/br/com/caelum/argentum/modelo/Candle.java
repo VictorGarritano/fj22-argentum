@@ -3,7 +3,7 @@ package br.com.caelum.argentum.modelo;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public final class CandleStick {
+public final class Candle {
 	private final double abertura;
 	private final double fechamento;
 	private final double minimo;
@@ -12,7 +12,7 @@ public final class CandleStick {
 	private final Calendar data;
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-	public CandleStick(double abertura, double fechamento, double minimo,
+	public Candle(double abertura, double fechamento, double minimo,
 			double maximo, double volume, Calendar data) {
 		if (abertura < 0 || fechamento < 0 || minimo < 0 || maximo < 0
 				|| volume < 0) {
@@ -70,8 +70,8 @@ public final class CandleStick {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "[" + "Abertura: " + this.getAbertura() + ", Fechamento: "
-				+ this.getFechamento() + ", Mínimo: " + this.getMinimo()
-				+ ", Máximo: " + this.getMaximo() + ", Volume: "
+				+ this.getFechamento() + ", Mï¿½nimo: " + this.getMinimo()
+				+ ", Mï¿½ximo: " + this.getMaximo() + ", Volume: "
 				+ this.getVolume() + ", Data: "
 				+ sdf.format(this.getData().getTime()) + "]";
 	}
