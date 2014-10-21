@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="lib/xstream-1.4.7/lib/xstream-benchmark-1.4.7.jar"/>
 	<classpathentry kind="lib" path="lib/xstream-1.4.7/lib/xstream-hibernate-1.4.7.jar"/>
 	<classpathentry kind="lib" path="lib/jfreechart-1.0.19/jfreechart-1.0.19-demo.jar"/>
+	<classpathentry kind="lib" path="/home/victorge/Downloads/JTattoo-1.6.10.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
