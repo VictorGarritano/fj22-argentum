@@ -121,7 +121,7 @@ public class ArgentumUI {
 	}
 
 	private void preparaTitulo() {
-		JLabel titulo = new JLabel("Lista de Negócios", SwingConstants.CENTER);
+		JLabel titulo = new JLabel("Lista de Negocios", SwingConstants.CENTER);
 		titulo.setFont(new Font("Verdana", Font.BOLD, 25));
 		painelPrincipal.add(titulo, BorderLayout.NORTH);
 	}

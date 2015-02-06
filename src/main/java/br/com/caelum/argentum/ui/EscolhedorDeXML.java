@@ -17,7 +17,7 @@ public class EscolhedorDeXML {
 	public List<Negociacao> escolhe() {
 		try {
 			JFileChooser chooser = new JFileChooser(
-					"/home/victorge/git/fj22-argentum");
+					"C:/Users/Victor/git/fj22-argentum");
 			chooser.setFileFilter(new FileNameExtensionFilter("Apenas XML",
 					"xml"));
 			int retorno = chooser.showOpenDialog(null);
