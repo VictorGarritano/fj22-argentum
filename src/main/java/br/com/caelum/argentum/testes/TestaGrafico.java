@@ -24,7 +24,7 @@ public class TestaGrafico {
 
 		g.salva(new FileOutputStream("grafico.png"));
 
-		JFrame frame = new JFrame("Grafico X.0");
+		JFrame frame = new JFrame("Grafico version ArgentumIsBack.0");
 		frame.add(g.getPanel());
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
