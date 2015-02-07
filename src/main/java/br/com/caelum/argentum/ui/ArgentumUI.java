@@ -141,7 +141,7 @@ public class ArgentumUI {
 
 	private void carregaDados() {
 		List<Negociacao> lista = new EscolhedorDeXML().escolhe();
-		NegociosTableModel ntm = new NegociosTableModel(lista);
+		ArgentumTableModel ntm = new ArgentumTableModel(lista);
 		tabela.setModel(ntm);
 		janela.requestFocus();
 
