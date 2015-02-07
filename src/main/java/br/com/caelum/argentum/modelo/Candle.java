@@ -19,10 +19,7 @@ public final class Candle {
 			throw new IllegalArgumentException(
 					"None of the values can be negative.");
 		}
-		if (maximo < minimo) {
-			throw new IllegalArgumentException(
-					"The mininum value cant be higher than the higher one");
-		}
+
 		if (data == null) {
 			throw new IllegalArgumentException("The date can't be null.");
 		}
