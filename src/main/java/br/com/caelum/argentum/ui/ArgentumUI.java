@@ -6,9 +6,11 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,9 +20,11 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.text.MaskFormatter;
 
 import br.com.caelum.argentum.graficos.GeradorDeGrafico;
 import br.com.caelum.argentum.indicadores.IndicadorFechamento;
+import br.com.caelum.argentum.indicadores.MediaMovelPonderada;
 import br.com.caelum.argentum.indicadores.MediaMovelSimples;
 import br.com.caelum.argentum.modelo.Candle;
 import br.com.caelum.argentum.modelo.CandleFactory;
@@ -34,6 +38,7 @@ public class ArgentumUI {
 	private JTable tabela;
 	private JPanel painelBotoes;
 	private JTabbedPane abas;
+	private JFormattedTextField campoData;
 
 	public static void main(String[] args) {
 		try {
@@ -54,10 +59,28 @@ public class ArgentumUI {
 		preparaTitulo();
 		preparaTabela();
 		preparaPainelBotoes();
+		preparaCampoData();
 		preparaBotaoCarregar();
 		preparaBotaoSair();
 		mostraJanela();
 
+	}
+
+	private void preparaCampoData() {
+		// TODO Auto-generated method stub
+		JLabel labelData = new JLabel("Apenas a partir de:");
+		try {
+			MaskFormatter mascara = new MaskFormatter("##/##/####");
+			mascara.setPlaceholderCharacter('_');
+			campoData = new JFormattedTextField(mascara);
+
+			painelBotoes.add(labelData);
+			painelBotoes.add(campoData);
+
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void preparaAbas() {
@@ -141,6 +164,9 @@ public class ArgentumUI {
 
 	private void carregaDados() {
 		List<Negociacao> lista = new EscolhedorDeXML().escolhe();
+		if (campoData.getValue() != null) {
+			new FiltradorPorData(campoData.getText()).filtra(lista);
+		}
 		ArgentumTableModel ntm = new ArgentumTableModel(lista);
 		tabela.setModel(ntm);
 		janela.requestFocus();
@@ -153,6 +179,7 @@ public class ArgentumUI {
 				serie.getTotal() - 1);
 		gerador.plotaIndicador(new MediaMovelSimples(new IndicadorFechamento()));
 		gerador.plotaIndicador(new IndicadorFechamento());
+		gerador.plotaIndicador(new MediaMovelPonderada());
 
 		abas.setComponentAt(1, gerador.getPanel());
 
